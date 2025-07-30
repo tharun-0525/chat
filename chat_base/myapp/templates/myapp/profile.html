@@ -13,7 +13,7 @@
 
     {% if is_own_profile %}
       <div class="space-y-2">
-        <a href="{% url 'myapp:profile_edit' request.user.username %}" class="text-blue-500 hover:underline block">Edit Profile</a>
+        <a href="{% url 'myapp:profile_edit' %}" class="text-blue-500 hover:underline block">Edit Profile</a>
         <a href="{% url 'myapp:logout' %}" class="text-red-500 hover:underline block">Logout</a>
       </div>
     {% endif %}

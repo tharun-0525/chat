@@ -34,9 +34,15 @@
         </div>
 
           <div class="text-gray-600 font-medium">
+            {% if message.user == request.user %}
+            <a href="{% url 'myapp:profile' %}">
+              {{ message.user.username }}
+            </a>
+            {%else%}
             <a href="{% url 'myapp:profile' message.user.username|default:'anonymous' %}">
               {{ message.user.username }}
             </a>
+            {%endif%}
           </div>
 
         <div class="text-gray-800 mt-1">{{ message.text }}</div>

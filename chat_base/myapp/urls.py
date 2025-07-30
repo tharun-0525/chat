@@ -11,8 +11,8 @@ urlpatterns =[
     path("login/", LoginView.as_view(template_name="myapp/login.html"), name= "login"),
     path("logout/", LogoutView.as_view(next_page="myapp:login"), name= "logout"),
     path("profile/<str:username>/", profile_view.as_view(), name="profile"),
-    path("profile/anonymous/", profile_view.as_view(), name="profile"),
-    path("profile/<str:username>/edit", ProfileEditView.as_view(), name='profile_edit')
+    path("profile/", profile_view.as_view(), name="profile"),
+    path("profile/edit", ProfileEditView.as_view(), name='profile_edit')
 ]
 
 if settings.DEBUG:
