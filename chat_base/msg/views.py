@@ -24,4 +24,4 @@ def text_view(request, username):
         Q(sender__username=user1, reciever__username=user2) |
         Q(sender__username=user2, reciever__username=user1)
     ).order_by('time')
-    return render(request, 'msg/messages.html', {'messages':messages})
+    return render(request, 'msg/messages.html', {'messages':messages,'reciever': User.objects.get(username=username)})
