@@ -1,1 +1,28 @@
-/chat_env
+# Virtual environment
+/chat_env/
+/venv/
+
+# Database files
+*.sqlite3
+db.sqlite3
+
+# Media and static files
+/media/
+/staticfiles/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+/*.pyc
+
+# IDE/editor config
+.vscode/
+*.swp
+*.sublime-workspace
+*.sublime-project
+
+# OS-generated files
+.DS_Store
+Thumbs.db

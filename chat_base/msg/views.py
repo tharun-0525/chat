@@ -3,19 +3,25 @@ from django.views.generic import ListView
 from .models import Message, User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
+from django.db.models import Q
 
+@ login_required
+def screen_view(request):
+    users = User.objects.all()
+    return render(request, 'msg/screen.html', {'users': users})
 
 @login_required
-def text_view(request):
+def text_view(request, username):
     if request.method=='POST':
         content = request.POST.get('text')
-        print("content recieved")
         if content:
             user=get_user(request)
-            print(user)
-            Message.objects.create(user=user,text=content)
-            print("content saved")
-        return redirect('msg:screen')
-    
-    messages = Message.objects.order_by('time')
-    return render(request, 'msg/screen.html', {'messages':messages})
+            Message.objects.create(sender=user,reciever = User.objects.get(username=username),text=content)
+        return redirect('msg:text', username=username)
+    user1 = get_user(request).username
+    user2 = username
+    messages = Message.objects.filter(
+        Q(sender__username=user1, reciever__username=user2) |
+        Q(sender__username=user2, reciever__username=user1)
+    ).order_by('time')
+    return render(request, 'msg/messages.html', {'messages':messages})
