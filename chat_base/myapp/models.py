@@ -8,4 +8,17 @@ from django.db import models
 class User(AbstractUser):
     email = models.EmailField(default='example@example.com')
     pfp = models.ImageField(upload_to="profile_photo/", null=True, blank=True)
-
+    plang = models.CharField(
+        max_length=10,
+        choices=[
+            ('en', 'English'),
+            ('es', 'Spanish'),
+            ('fr', 'French'),
+            ('de', 'German'),
+            ('zh', 'Chinese'),
+            ('ja', 'Japanese'),
+            ('ru', 'Russian'),  
+        ],
+        default='en'
+    )
+    lmode = models.BooleanField(default=False)
