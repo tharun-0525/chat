@@ -1,10 +1,13 @@
 # Virtual environment
 /chat_env/
 /venv/
+/env/
 
 # Database files
 *.sqlite3
 db.sqlite3
+chat_base/db.sqlite3
+chat_base\db.sqlite3
 
 # Media and static files
 /media/
