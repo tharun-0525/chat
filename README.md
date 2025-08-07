@@ -1,15 +1,22 @@
-# Django Chat App (Learning Project)
+# 🗨️ Django Cross-Language Chat App with Translation (Learning Project)
 
-This is a basic Django web application built as part of my learning journey.  
-It includes user authentication, profile editing, image upload, and more features coming soon.
+This is a simple Django-based chat application developed as part of my learning journey.  
+It includes user authentication, real-time-ish chat features, language translation, and profile editing with image upload.
 
-> ⚠️ This is a **build-to-learn** project — it's not production-ready yet.
+> ⚠️ This project is meant for **learning and experimenting** — not ready for production use.
 
-## Features
+---
 
-- User login and registration
-- Edit profile with image upload
-- TailwindCSS-based UI
+## 🚀 Features
+
+- 🔐 User registration & login
+- 🖼️ Profile edit with image upload
+- 💬 One-on-one chat interface
+- 🌍** Optional translation toggle for received messages**
+- 🎨 TailwindCSS-powered clean UI
+- ⚙️ Modular Django architecture for easy expansion
+
+---
 
 ## Setup Instructions
 
