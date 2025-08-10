@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from .views import register_view, profile_view, ProfileEditView
 from django.contrib.auth.views import LoginView, LogoutView
@@ -12,7 +12,7 @@ urlpatterns =[
     path("logout/", LogoutView.as_view(next_page="myapp:login"), name= "logout"),
     path("profile/<str:username>/", profile_view.as_view(), name="profile"),
     path("profile/", profile_view.as_view(), name="profile"),
-    path("profile/edit", ProfileEditView.as_view(), name='profile_edit')
+    path("profile/edit", ProfileEditView.as_view(), name='profile_edit'),
 ]
 
 if settings.DEBUG:
