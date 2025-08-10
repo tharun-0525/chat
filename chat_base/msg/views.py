@@ -15,25 +15,6 @@ def screen_view(request):
 
 @login_required
 def text_view(request, username):
-    if request.method == 'POST':
-        print("POST request received")
-        form_type = request.POST.get('form_type')
-
-        if form_type == 'send_message':
-            print("Sending message")
-            content = request.POST.get('text')
-            if content:
-                user = request.user
-                Message.objects.create(
-                    sender=user,
-                    reciever=User.objects.get(username=username),
-                    text=content
-                )
-            return redirect('msg:text', username=username)
-        elif form_type == 'toggle':
-            request.user.lmode = not request.user.lmode
-            request.user.save()
-            return redirect('msg:text', username=username)
     user1 = request.user.username
     user2 = username
     messages = Message.objects.filter(
@@ -55,3 +36,28 @@ def text_view(request, username):
         'reciever': User.objects.get(username=username)
     })
 
+@login_required
+def text_send(request, username):
+    if request.method == 'POST':
+        content = request.POST.get('text')
+        if request.user.lmode == True:
+            print("Translating messages")
+            content = translateLang(content, 'en')
+            print("Translated content:", content)
+        if content:
+            user = request.user
+            Message.objects.create(
+                sender=user,
+                reciever=User.objects.get(username=username),
+                text=content
+            )
+        return redirect('msg:text', username=username)
+    return redirect('msg:text', username=username)
+
+@login_required
+def text_toggle(request, username):
+    if request.method == 'POST':
+        request.user.lmode = not request.user.lmode
+        request.user.save()
+        return redirect('msg:text', username=username)
+    return redirect('msg:text', username=username)
