@@ -13,7 +13,6 @@ urlpatterns =[
     path("profile/<str:username>/", profile_view.as_view(), name="profile"),
     path("profile/", profile_view.as_view(), name="profile"),
     path("profile/edit", ProfileEditView.as_view(), name='profile_edit'),
-    path("api/", include("myapp.api.urls")),
 ]
 
 if settings.DEBUG:
